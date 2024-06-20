@@ -47,8 +47,8 @@ export default function Dashboard() {
           </li>
           </div>
           <div className="">
-            <li><button onClick={logout} >Log Out</button></li>
             <li><Link to='/'>Home</Link></li>
+            <li><button onClick={logout} >Log Out</button></li>
             
           </div>
         </ul>
