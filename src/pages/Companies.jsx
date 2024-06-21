@@ -1,9 +1,8 @@
-
-import { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading state
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -16,11 +15,21 @@ const Companies = () => {
         setCompanies(data);
       } catch (error) {
         console.error('Error fetching companies:', error);
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or error
       }
     };
 
     fetchCompanies();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center mt-20 p-20 flex items-center justify-center">
+        Loading... <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-100 py-12 mt-14">
@@ -30,7 +39,7 @@ const Companies = () => {
           {companies.map((company, index) => (
             <a href='' key={index} className="card bg-white rounded-lg shadow-md p-6 text-center">
               <img src={company.logo} alt={`${company.name} logo`} className=" h-24 mx-auto mb-4" />
-              <h3  className="text-xl font-semibold mb-2">{company.name}</h3>
+              <h3 className="text-xl font-semibold mb-2">{company.name}</h3>
             </a>
           ))}
         </div>

@@ -1,38 +1,36 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const AllJobs = () => {
   const [jobs, setJobs] = useState([]);
   const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading state
 
   useEffect(() => {
-    const fetchJobs = async () => {
+    const fetchJobsAndCompanies = async () => {
       try {
-        const response = await fetch('https://synced-in-backend.vercel.app/jobsstored'); // Adjust URL as per your endpoint
-        if (!response.ok) {
+        // Fetch jobs data
+        const jobsResponse = await fetch('https://synced-in-backend.vercel.app/jobsstored');
+        if (!jobsResponse.ok) {
           throw new Error('Failed to fetch jobs');
         }
-        const data = await response.json();
-        setJobs(data);
-      } catch (error) {
-        console.error('Error fetching jobs:', error);
-      }
-    };
+        const jobsData = await jobsResponse.json();
+        setJobs(jobsData);
 
-    const fetchCompanies = async () => {
-      try {
-        const response = await fetch('/companies.json'); // Adjust path as per your project structure
-        if (!response.ok) {
+        // Fetch companies data
+        const companiesResponse = await fetch('/companies.json'); // Adjust path as per your project structure
+        if (!companiesResponse.ok) {
           throw new Error('Failed to fetch companies');
         }
-        const data = await response.json();
-        setCompanies(data);
+        const companiesData = await companiesResponse.json();
+        setCompanies(companiesData);
       } catch (error) {
-        console.error('Error fetching companies:', error);
+        console.error('Error fetching data:', error);
+      } finally {
+        setLoading(false); // Set loading to false regardless of success or error
       }
     };
 
-    fetchJobs();
-    fetchCompanies();
+    fetchJobsAndCompanies();
   }, []);
 
   const renderJobs = () => {
@@ -55,6 +53,10 @@ const AllJobs = () => {
       );
     });
   };
+
+  if (loading) {
+    return <div className="text-center mt-20 p-20 flex items-center justify-center">Loading... <span className="loading loading-spinner loading-lg"></span> </div>; // Conditional rendering for loading state
+  }
 
   return (
     <div className="bg-gray-100 py-12 mt-14">
