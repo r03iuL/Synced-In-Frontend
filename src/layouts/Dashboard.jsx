@@ -40,15 +40,15 @@ export default function Dashboard() {
           {/* Sidebar content here */}
           <div>
           <li>
-            <a>Sidebar Item 1</a>
+            <Link to="manage" className="btn bg-green-500 mb-5">Manage Jobs</Link>
           </li>
           <li>
-            <a>Sidebar Item 2</a>
+            <Link to="" className="btn bg-green-500 mb-5" >Create New Job</Link>
           </li>
           </div>
           <div className="">
-            <li><Link to='/'>Home</Link></li>
-            <li><button onClick={logout} >Log Out</button></li>
+            <li><Link to='/' className="btn bg-green-500 mb-5">Home</Link></li>
+            <li><button onClick={logout} className="btn bg-green-500 mb-5" >Log Out</button></li>
             
           </div>
         </ul>

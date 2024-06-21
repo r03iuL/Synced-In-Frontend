@@ -1,8 +1,8 @@
-import React from "react";
+
 
 export default function Footer() {
   return (
-    <footer className="footer footer-center p-10 bg-green-600 text-base-content rounded text-white font-semibold">
+    <footer className="footer footer-center p-10 bg-green-600  rounded text-white font-semibold">
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a>

@@ -4,13 +4,14 @@ import Home from "./../pages/Home";
 import Login from "./../pages/Login";
 import Signup from "./../pages/Signup";
 import All_Jobs from "./../pages/All_Jobs";
-import Dashboard from "../layouts/Dashboard";
 import Profile from "./../pages/Profile";
 import Post_Job from "./../pages/Post_Job";
 import Categories from "./../pages/Categories";
 import PrivateRoute from "./privateRoutes";
 import Companies from './../pages/Companies';
 import About from './../pages/About';
+import ManageJobs from './../pages/MangeJobs';
+import Dashboard from './../layouts/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -66,7 +67,13 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
-    children: [],
+    children: [
+      {
+        path: "manage",
+        element: <ManageJobs></ManageJobs>,
+      },
+
+    ],
   },
 ]);
 
