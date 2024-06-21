@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const FuturedCategories = () => {
   // Define predefined categories with name and image URL

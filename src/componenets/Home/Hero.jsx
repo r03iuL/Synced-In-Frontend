@@ -12,7 +12,7 @@ export default function Hero() {
           <h1 className="mb-5 text-5xl font-bold">Find Your <span className="text-green-500">Dream Job!</span></h1>
           <p className="mb-5 text-lg">
             Explore a vast array of job listings from leading companies on
-            SyncedIn. Whether you`&apos`re a seasoned professional or just starting
+            SyncedIn. Whether you&apos;re a seasoned professional or just starting
             your career, find the perfect opportunity that aligns with your
             skills and aspirations. Connect with top employers, network with
             industry leaders, and take the next step in your career journey with
